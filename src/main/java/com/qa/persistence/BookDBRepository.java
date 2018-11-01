@@ -5,6 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 // this class performs a database transaction (SQL insert)
-public class BookServiceImpl {
+public class BookDBRepository {
 
 }

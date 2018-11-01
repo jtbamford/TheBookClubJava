@@ -1,7 +1,10 @@
-package com.qa.persistence;
+package com.qa.service;
 
 public interface BookService {
-
+	
+	// these methods are adding, deleting, getting etc. the books from a list in Java, not from the database
+	// using these list we can then act on these books to write our business rules (define the list in BookServiceImpl)
+	
 	String getAllBooks();
 	
 	// method gets the books for an individual user
