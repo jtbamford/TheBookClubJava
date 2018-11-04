@@ -20,10 +20,9 @@ public class Book {
 
 	}
 
-	public Book(int bookID, String title, String author) {
-		this.bookID = bookID;
-		this.setTitle(title);
-		this.setAuthor(author);
+	public Book(String title, String author) {
+		this.title=title;
+		this.author=author;
 	}
 
 	public String getTitle() {
