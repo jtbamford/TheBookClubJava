@@ -2,17 +2,20 @@ package com.qa.persistence;
 
 public interface BookRepository {
 
-	// these methods have come from BookService, and are used to add books to a list in Java so we can do things with them
-	// (as opposed to adding etc. to the database)
+	// interface not strictly necessary since only one implementation defined
 	
 	String getAllBooks();
 	
 	// method gets the books for an individual user
-	String getBooks(Long id);
+	String getBooks(Long userID);
 
 	// method adds book for an individual user
-	String addBook(String title, String author, Long id);
+	String addBook(String title, String author, Long userID);
 
-	String deleteAccount(Long id);
+	String deleteUser(Long userID);
+
+	String addUser(String username);
 	
+	// delete book for individual user
+	String deleteBook(Long bookID, Long userID);
 }

@@ -5,11 +5,11 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 
-// this is where we will define our objects from the table library
+// this is where we will define our objects from the table bookownership
 // define these quantities in Java
 
-@Entity @IdClass(LibraryID.class)
-public class Library {
+@Entity @IdClass(BookOwnershipID.class)
+public class BookOwnership {
 	
 	private byte rating;
 	private String review;
@@ -20,11 +20,11 @@ public class Library {
 	@Id
 	private User user;
 
-	public Library() {
+	public BookOwnership() {
 
 	}
 
-	public Library(byte rating, String review, Book book, User user) {
+	public BookOwnership(byte rating, String review, Book book, User user) {
 		this.rating=rating;
 		this.review=review;
 		this.book=book;
