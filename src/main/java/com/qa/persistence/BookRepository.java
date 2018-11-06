@@ -18,4 +18,6 @@ public interface BookRepository {
 	
 	// delete book for individual user
 	String deleteBook(Long bookID, Long userID);
+	
+	String updateUser(String user, Long userID);
 }
