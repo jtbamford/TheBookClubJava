@@ -34,11 +34,19 @@ public class BookDBRepository implements BookRepository {
 	}
 
 	@Transactional(REQUIRED)
-	public String addBook(String title, String author, Long userID) {
+	public String addBook(String booktoadd) {
 		Book abook = util.getObjectForJSON(booktoadd, Book.class);
 		manager.persist(abook);
-		return "{\"message\": \"book has been sucessfully added\"}";
+		return "{\"message\": \"book has been sucessfully added to Database\"}";
 	}
+	
+	@Transactional(REQUIRED)
+	public String addBookForUser(String bookownershiptoadd) {
+		BookOwnership abookownership = util.getObjectForJSON(bookownershiptoadd, BookOwnership.class);
+		manager.persist(abookownership);
+		return "{\"message\": \"book has been sucessfully added to your Library\"}";
+	}
+	
 	
 	@Transactional(REQUIRED)
 	public String addUser(String username) {
@@ -48,12 +56,12 @@ public class BookDBRepository implements BookRepository {
 	}
 
 	@Transactional(REQUIRED)
-	public String deleteBook(Long bookID, Long userID) {
-		Account accountInDB = retrieveClassroom(classroomID);
-		if (accountInDB != null) {
-			manager.remove(accountInDB);
+	public String deleteBookForUser(String bookownership) {
+		BookOwnership abookownershipinDB = retrieveBookOwnership(Long bookownershipID);
+		if (abookownershipinDB != null) {
+			manager.remove(abookownershipinDB);
 		}
-		return "{\"message\": \"account sucessfully deleted\"}";
+		return "{\"message\": \"book has been sucessfully removed from your Library\"}";
 	}
 	
 	@Transactional(REQUIRED)
@@ -72,6 +80,10 @@ public class BookDBRepository implements BookRepository {
 	
 	public User retrieveUser(Long userID) {
 		return manager.find(User.class, userID);
+	}
+	
+	public BookOwnership retrieveBookOwnership(Long bookownershipID) {
+		return manager.find(BookOwnership.class, bookownershipID);
 	}
 	
 
