@@ -17,6 +17,7 @@ import com.qa.util.JSONUtil;
 
 // this class performs a database transaction (SQL insert)
 // need to remember to change my configuration to that of an SQL DB
+// need to change database so no longer use a composite ID
 
 @Transactional(SUPPORTS)
 public class BookDBRepository implements BookRepository {
@@ -56,8 +57,8 @@ public class BookDBRepository implements BookRepository {
 	}
 
 	@Transactional(REQUIRED)
-	public String deleteBookForUser(String bookownership) {
-		BookOwnership abookownershipinDB = retrieveBookOwnership(Long bookownershipID);
+	public String deleteBookForUser(Long bookownershipID) {
+		BookOwnership abookownershipinDB = retrieveBookOwnership(bookownershipID);
 		if (abookownershipinDB != null) {
 			manager.remove(abookownershipinDB);
 		}
@@ -94,6 +95,13 @@ public class BookDBRepository implements BookRepository {
 		userold.setUserID(auser.getUserID());
 		userold.setUsername(auser.getUsername());
 		return "{\"message\": \"account has been sucessfully updated\"}";
+	}
+
+	public String getBooks(Long userID) {
+		//User auserinDB = retrieveUser(userID);
+		Query query = manager.createQuery("Select a FROM Book a WHERE userID="+userID);
+		Collection<Book> books = (Collection<Book>) query.getResultList();
+		return util.getJSONForObject(books);
 	}
 
 }

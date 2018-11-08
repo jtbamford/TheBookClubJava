@@ -1,6 +1,8 @@
 package com.qa.persistence;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
@@ -8,27 +10,37 @@ import javax.persistence.JoinColumn;
 // this is where we will define our objects from the table bookownership
 // define these quantities in Java
 
-@Entity @IdClass(BookOwnershipID.class)
+@Entity
 public class BookOwnership {
 	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	private Long bookownershipID;
 	private byte rating;
 	private String review;
 	@JoinColumn(name="bookID")
-	@Id
 	private Book book;	
 	@JoinColumn(name="userID")
-	@Id
 	private User user;
 
 	public BookOwnership() {
 
 	}
 
-	public BookOwnership(byte rating, String review, Book book, User user) {
+	public BookOwnership(Long bookownershipID, byte rating, String review, Book book, User user) {
+		this.bookownershipID=bookownershipID;
 		this.rating=rating;
 		this.review=review;
 		this.book=book;
 		this.user=user;
+	}
+	
+	public Long getBookownershipID() {
+		return bookownershipID;
+	}
+
+	public void setBookownershipID(Long bookownershipID) {
+		this.bookownershipID = bookownershipID;
 	}
 
 	public byte getRating() {

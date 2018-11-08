@@ -21,7 +21,7 @@ public interface BookRepository {
 	String addUser(String username);
 	
 	// delete book for individual user
-	String deleteBookForUser(String bookownership);
+	String deleteBookForUser(Long bookownershipID);
 	
 	String updateUser(String user, Long userID);
 	

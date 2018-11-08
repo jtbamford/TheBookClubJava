@@ -25,20 +25,21 @@ username VARCHAR(255)
 
 -- SELECT * FROM users;
 
-CREATE TABLE IF NOT EXISTS library (
+CREATE TABLE IF NOT EXISTS bookownership (
+bookownershipID INT NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(bookownershipID),
 userID INT NOT NULL,
 FOREIGN KEY(userID) REFERENCES users(userID) ON DELETE CASCADE,
 bookID INT NOT NULL,
 FOREIGN KEY(bookID) REFERENCES books(bookID) ON DELETE CASCADE,
  rating BIT(5),
- review VARCHAR(1000),
-PRIMARY KEY(userID,bookID)
+ review VARCHAR(1000)
  );
  
- INSERT INTO library (userID,bookID,rating,review)
+ INSERT INTO bookownership (bookownershipID,userID,bookID,rating,review)
   VALUES (1, 1,5,'Good book');
 
 
- SELECT * FROM library;
+ SELECT * FROM bookownership;
 
 -- DROP DATABASE TheBookClub;
