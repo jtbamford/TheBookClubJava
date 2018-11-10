@@ -1,5 +1,7 @@
 package com.qa.service;
 
+import java.util.Collection;
+
 import com.qa.persistence.Book;
 import com.qa.persistence.BookOwnership;
 import com.qa.persistence.User;
@@ -12,8 +14,9 @@ public interface BookService {
 	// method gets the books for an individual user
 	String getBooks(Long userID);
 	
+	Collection<Book> getAllBooksAsObjects();
+	
 	// method adds a book to database (independent of user)
-	// only implement on first time any user wants to store this book (put this 'if' in service layer)
 	String addBook(String book);
 
 	// method adds book for an individual user

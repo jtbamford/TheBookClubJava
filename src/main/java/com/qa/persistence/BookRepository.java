@@ -1,5 +1,7 @@
 package com.qa.persistence;
 
+import java.util.Collection;
+
 public interface BookRepository {
 
 	// interface not strictly necessary since only one implementation defined
@@ -8,6 +10,8 @@ public interface BookRepository {
 	
 	// method gets the books for an individual user
 	String getBooks(Long userID);
+
+	Collection<Book> getAllBooksAsObjects();
 	
 	// method adds a book to database (independent of user)
 	// only implement on first time any user wants to store this book (put this 'if' in service layer)
