@@ -68,12 +68,12 @@ public class BookServiceImpl implements BookService {
 
 		// create business rule so username must be unique
 		
-		public String addUser(String username) {
-			User auserinDB = retrieveUserFromUsername(username);
-			if(repo.getAllUsersAsObjects().contains(auserinDB)) {
+		public String addUser(String user) {
+			User auser = util.getObjectForJSON(user, User.class);
+			if(repo.getAllUsersAsObjects().contains(auser)) {
 				return "username already in use, choose another";
 			} else {
-			return repo.addUser(username);
+			return repo.addUser(user);
 			}
 		}
 		

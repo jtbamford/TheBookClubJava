@@ -72,8 +72,8 @@ public class BookDBRepository implements BookRepository {
 	
 	
 	@Transactional(REQUIRED)
-	public String addUser(String username) {
-		User auser = util.getObjectForJSON(username, User.class);
+	public String addUser(String user) {
+		User auser = util.getObjectForJSON(user, User.class);
 		manager.persist(auser);
 		return "{\"message\": \"user has been sucessfully added\"}";
 	}
