@@ -16,7 +16,11 @@ public interface BookService {
 	
 	String getBookOwnership(Long bookownershipID);
 	
+	String getUser(String username);
+	
 	Collection<Book> getAllBooksAsObjects();
+	
+	Collection<User> getAllUsersAsObjects();
 	
 	// method adds a book to database (independent of user)
 	String addBook(String book);
@@ -26,7 +30,7 @@ public interface BookService {
 
 	String deleteUser(Long userID);
 	
-	String addUser(String username);
+	String addUser(String user);
 	
 	// delete book for individual user
 	String deleteBookForUser(Long bookownershipID);
@@ -36,6 +40,8 @@ public interface BookService {
 	Book retrieveBook(Long bookID);
 	
 	User retrieveUser(Long userID);
+	
+	User retrieveUserFromUsername(String username);
 	
 	BookOwnership retrieveBookOwnership(Long bookownershipID);
 	
