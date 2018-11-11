@@ -33,6 +33,10 @@ public class BookServiceImpl implements BookService {
 		return repo.getBooks(userID);
 		}
 		
+		public String getBookOwnership(Long bookownershipID) {
+			return repo.getBookOwnership(bookownershipID);
+		}
+		
 		public Collection<Book> getAllBooksAsObjects() {
 			return repo.getAllBooksAsObjects();
 		}

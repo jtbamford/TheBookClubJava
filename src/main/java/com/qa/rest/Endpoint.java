@@ -31,6 +31,13 @@ package com.qa.rest;
 			return service.getBooks(userID);
 		}
 		
+		@Path("/getBookOwnership")
+		@GET
+		@Produces({"application/json"})
+		public String getBookOwnership(Long bookownershipID) {
+			return service.getBookOwnership(bookownershipID);
+		}
+		
 		@Path("/createBook")
 		@POST
 		@Produces({"application/json"})

@@ -39,6 +39,11 @@ public class BookDBRepository implements BookRepository {
 		Collection<Book> books = (Collection<Book>) query.getResultList();
 		return books;
 	}
+	
+	public String getBookOwnership(Long bookownershipID) { 
+		BookOwnership abookownershipinDB = retrieveBookOwnership(bookownershipID);
+		return util.getJSONForObject(abookownershipinDB);
+	}
 
 	@Transactional(REQUIRED)
 	public String addBook(String booktoadd) {
