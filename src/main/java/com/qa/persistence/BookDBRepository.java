@@ -46,8 +46,14 @@ public class BookDBRepository implements BookRepository {
 		return users;
 	}
 	
-	public String getBookOwnership(Long bookownershipID) { 
-		BookOwnership abookownershipinDB = retrieveBookOwnership(bookownershipID);
+	public  Collection<BookOwnership> getAllBookOwnershipsAsObjects() {
+		Query query = manager.createQuery("Select a FROM BookOwnership a");
+		Collection<BookOwnership> bookownerships = (Collection<BookOwnership>) query.getResultList();
+		return bookownerships;
+	}
+	
+	public String getBookOwnership(String username, String title, String author) { 
+		BookOwnership abookownershipinDB = retrieveBookOwnership(username, title, author);
 		return util.getJSONForObject(abookownershipinDB);
 	}
 	
@@ -80,7 +86,7 @@ public class BookDBRepository implements BookRepository {
 
 	@Transactional(REQUIRED)
 	public String deleteBookForUser(Long bookownershipID) {
-		BookOwnership abookownershipinDB = retrieveBookOwnership(bookownershipID);
+		BookOwnership abookownershipinDB = retrieveBookOwnershipByID(bookownershipID);
 		if (abookownershipinDB != null) {
 			manager.remove(abookownershipinDB);
 		}
@@ -105,12 +111,23 @@ public class BookDBRepository implements BookRepository {
 		return manager.find(User.class, userID);
 	}
 	
-	public User retrieveUserFromUsername(String username) {
-		return manager.find(User.class, username);
+	public BookOwnership retrieveBookOwnershipByID(Long bookownershipID) {
+		return manager.find(BookOwnership.class, bookownershipID);
 	}
 	
-	public BookOwnership retrieveBookOwnership(Long bookownershipID) {
-		return manager.find(BookOwnership.class, bookownershipID);
+	public User retrieveUserFromUsername(String username) {
+		Collection<User> users = getAllUsersAsObjects();
+		User user = users.stream().filter(i->i.getUsername().equalsIgnoreCase(username)).findAny().get();
+		return user;
+	}
+	
+	public BookOwnership retrieveBookOwnership(String username, String title, String author) {
+		Book thebook = new Book(title, author);
+		User theuser = new User(username);
+		Collection<BookOwnership> bookownerships = getAllBookOwnershipsAsObjects();
+		BookOwnership bookownership = bookownerships.stream().filter(i->i.getBook().equals(thebook))
+				.filter(i->i.getUser().equals(theuser)).findAny().get();
+		return bookownership;
 	}
 	
 
