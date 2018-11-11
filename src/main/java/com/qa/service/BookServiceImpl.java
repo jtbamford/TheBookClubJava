@@ -37,8 +37,16 @@ public class BookServiceImpl implements BookService {
 			return repo.getBookOwnership(bookownershipID);
 		}
 		
+		public String getUser(String username) {
+			return repo.getUser(username);
+		}
+		
 		public Collection<Book> getAllBooksAsObjects() {
 			return repo.getAllBooksAsObjects();
+		}
+		
+		public Collection<User> getAllUsersAsObjects() {
+			return repo.getAllUsersAsObjects();
 		}
 		
 		public String addBook(String book) {
@@ -58,8 +66,15 @@ public class BookServiceImpl implements BookService {
 			return repo.deleteUser(userID);
 		}
 
+		// create business rule so username must be unique
+		
 		public String addUser(String username) {
+			User auserinDB = retrieveUserFromUsername(username);
+			if(repo.getAllUsersAsObjects().contains(auserinDB)) {
+				return "username already in use, choose another";
+			} else {
 			return repo.addUser(username);
+			}
 		}
 		
 		public String deleteBookForUser(Long bookownershipID) {
@@ -76,6 +91,10 @@ public class BookServiceImpl implements BookService {
 		
 		public User retrieveUser(Long userID) {
 			return repo.retrieveUser(userID);
+		}
+		
+		public User retrieveUserFromUsername(String username) {
+			return repo.retrieveUserFromUsername(username);
 		}
 		
 		public BookOwnership retrieveBookOwnership(Long bookownershipID) {

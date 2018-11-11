@@ -38,6 +38,13 @@ package com.qa.rest;
 			return service.getBookOwnership(bookownershipID);
 		}
 		
+		@Path("/getUser")
+		@GET
+		@Produces({"application/json"})
+		public String getUser(String username) {
+			return service.getUser(username);
+		}
+		
 		@Path("/createBook")
 		@POST
 		@Produces({"application/json"})
