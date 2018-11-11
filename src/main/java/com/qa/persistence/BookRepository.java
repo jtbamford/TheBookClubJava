@@ -11,13 +11,15 @@ public interface BookRepository {
 	// method gets the books for an individual user
 	String getBooks(Long userID);
 	
-	String getBookOwnership(Long bookownershipID);
+	String getBookOwnership(String username, String title, String author);
 	
 	String getUser(String username);
 
 	Collection<Book> getAllBooksAsObjects();
 	
 	Collection<User> getAllUsersAsObjects();
+	
+	Collection<BookOwnership> getAllBookOwnershipsAsObjects();
 	
 	// method adds a book to database (independent of user)
 	// only implement on first time any user wants to store this book (put this 'if' in service layer)
@@ -39,8 +41,10 @@ public interface BookRepository {
 	
 	User retrieveUser(Long userID);
 	
+	BookOwnership retrieveBookOwnershipByID(Long bookownershipID);
+	
 	User retrieveUserFromUsername(String username);
 	
-	BookOwnership retrieveBookOwnership(Long bookownershipID);
+	BookOwnership retrieveBookOwnership(String username, String title, String author);
 	
 }

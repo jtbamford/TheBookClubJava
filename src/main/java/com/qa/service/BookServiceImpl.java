@@ -33,8 +33,8 @@ public class BookServiceImpl implements BookService {
 		return repo.getBooks(userID);
 		}
 		
-		public String getBookOwnership(Long bookownershipID) {
-			return repo.getBookOwnership(bookownershipID);
+		public String getBookOwnership(String username, String title, String author) {
+			return repo.getBookOwnership(username, title, author);
 		}
 		
 		public String getUser(String username) {
@@ -49,6 +49,10 @@ public class BookServiceImpl implements BookService {
 			return repo.getAllUsersAsObjects();
 		}
 		
+		public  Collection<BookOwnership> getAllBookOwnershipsAsObjects() {
+			return repo.getAllBookOwnershipsAsObjects();
+		}
+		
 		public String addBook(String book) {
 			Book abook = util.getObjectForJSON(book, Book.class);
 			if(repo.getAllBooksAsObjects().contains(abook)) {
@@ -59,7 +63,12 @@ public class BookServiceImpl implements BookService {
 		}
 	
 		public String addBookForUser(String bookownership) {
+			BookOwnership abookownership = util.getObjectForJSON(bookownership, BookOwnership.class);
+			if(repo.getAllBookOwnershipsAsObjects().contains(abookownership)) {
+				return "Book already in your Library";
+			} else {
 			return repo.addBookForUser(bookownership);
+			}
 		}
 
 		public String deleteUser(Long userID) {
@@ -93,12 +102,16 @@ public class BookServiceImpl implements BookService {
 			return repo.retrieveUser(userID);
 		}
 		
+		public BookOwnership retrieveBookOwnershipByID(Long bookownershipID) {
+			return repo.retrieveBookOwnershipByID(bookownershipID);
+		}
+		
 		public User retrieveUserFromUsername(String username) {
 			return repo.retrieveUserFromUsername(username);
 		}
 		
-		public BookOwnership retrieveBookOwnership(Long bookownershipID) {
-			return repo.retrieveBookOwnership(bookownershipID);
+		public BookOwnership retrieveBookOwnership(String username, String title, String author) {
+			return repo.retrieveBookOwnership(username, title, author);
 		}
 		
 }

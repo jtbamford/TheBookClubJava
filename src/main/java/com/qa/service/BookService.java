@@ -14,13 +14,15 @@ public interface BookService {
 	// method gets the books for an individual user
 	String getBooks(Long userID);
 	
-	String getBookOwnership(Long bookownershipID);
+	String getBookOwnership(String username, String title, String author);
 	
 	String getUser(String username);
 	
 	Collection<Book> getAllBooksAsObjects();
 	
 	Collection<User> getAllUsersAsObjects();
+	
+	Collection<BookOwnership> getAllBookOwnershipsAsObjects();
 	
 	// method adds a book to database (independent of user)
 	String addBook(String book);
@@ -41,8 +43,10 @@ public interface BookService {
 	
 	User retrieveUser(Long userID);
 	
+	BookOwnership retrieveBookOwnershipByID(Long bookownershipID);
+	
 	User retrieveUserFromUsername(String username);
 	
-	BookOwnership retrieveBookOwnership(Long bookownershipID);
+	BookOwnership retrieveBookOwnership(String username, String title, String author);
 	
 }

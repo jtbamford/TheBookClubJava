@@ -34,8 +34,8 @@ package com.qa.rest;
 		@Path("/getBookOwnership")
 		@GET
 		@Produces({"application/json"})
-		public String getBookOwnership(Long bookownershipID) {
-			return service.getBookOwnership(bookownershipID);
+		public String getBookOwnership(String username, String title, String author) {
+			return service.getBookOwnership(username, title, author);
 		}
 		
 		@Path("/getUser")
