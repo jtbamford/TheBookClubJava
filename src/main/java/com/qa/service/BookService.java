@@ -14,6 +14,8 @@ public interface BookService {
 	// method gets the books for an individual user
 	String getBooks(Long userID);
 	
+	String getBookOwnership(Long bookownershipID);
+	
 	Collection<Book> getAllBooksAsObjects();
 	
 	// method adds a book to database (independent of user)
