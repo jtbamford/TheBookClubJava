@@ -23,7 +23,8 @@ package com.qa.rest;
 		public String getAllBooks() {
 			return service.getAllBooks();
 		}
-		
+	
+		/* need to use ID's as inputs in URL here!	
 		@Path("/getBooks")
 		@GET
 		@Produces({"application/json"})
@@ -44,6 +45,8 @@ package com.qa.rest;
 		public String getUser(String username) {
 			return service.getUser(username);
 		}
+	*/	
+		
 		
 		@Path("/createBook")
 		@POST

@@ -1,11 +1,15 @@
 package com.qa.persistence;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 // this is where we will define our objects from the table bookownership
 // define these quantities in Java
@@ -19,22 +23,38 @@ public class BookOwnership {
 	private byte rating;
 	private String review;
 	@JoinColumn(name="bookID")
-	private Book book;	
+	private Long bookID;	
 	@JoinColumn(name="userID")
-	private User user;
+	private Long userID;
 
 	public BookOwnership() {
 
 	}
 
-	public BookOwnership(Long bookownershipID, byte rating, String review, Book book, User user) {
+	public BookOwnership(Long bookownershipID, byte rating, String review, Long bookID, Long userID) {
 		this.bookownershipID=bookownershipID;
 		this.rating=rating;
 		this.review=review;
-		this.book=book;
-		this.user=user;
+		this.bookID=bookID;
+		this.userID=userID;
 	}
 	
+	public Long getBookID() {
+		return bookID;
+	}
+
+	public void setBookID(Long bookID) {
+		this.bookID = bookID;
+	}
+
+	public Long getUserID() {
+		return userID;
+	}
+
+	public void setUserID(Long userID) {
+		this.userID = userID;
+	}
+
 	public Long getBookownershipID() {
 		return bookownershipID;
 	}
@@ -59,20 +79,6 @@ public class BookOwnership {
 		this.review = review;
 	}
 
-	public Book getBook() {
-		return book;
-	}
 
-	public void setBook(Book book) {
-		this.book = book;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 }

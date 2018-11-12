@@ -125,8 +125,8 @@ public class BookDBRepository implements BookRepository {
 		Book thebook = new Book(title, author);
 		User theuser = new User(username);
 		Collection<BookOwnership> bookownerships = getAllBookOwnershipsAsObjects();
-		BookOwnership bookownership = bookownerships.stream().filter(i->i.getBook().equals(thebook))
-				.filter(i->i.getUser().equals(theuser)).findAny().get();
+		BookOwnership bookownership = bookownerships.stream().filter(i->retrieveBook(i.getBookID()).equals(thebook))
+				.filter(i->retrieveUser(i.getUserID()).equals(theuser)).findAny().get();
 		return bookownership;
 	}
 	

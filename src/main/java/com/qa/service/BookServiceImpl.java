@@ -54,21 +54,21 @@ public class BookServiceImpl implements BookService {
 		}
 		
 		public String addBook(String book) {
-			Book abook = util.getObjectForJSON(book, Book.class);
-			if(repo.getAllBooksAsObjects().contains(abook)) {
-				return "Book already in database";
-			} else {
+		//	Book abook = util.getObjectForJSON(book, Book.class);
+		//	if(repo.getAllBooksAsObjects().contains(abook)) {
+		//		return "Book already in database";
+		//	} else {
 			return repo.addBook(book);
-			}
+		//	}
 		}
 	
 		public String addBookForUser(String bookownership) {
-			BookOwnership abookownership = util.getObjectForJSON(bookownership, BookOwnership.class);
-			if(repo.getAllBookOwnershipsAsObjects().contains(abookownership)) {
-				return "Book already in your Library";
-			} else {
+		//	BookOwnership abookownership = util.getObjectForJSON(bookownership, BookOwnership.class);
+		//	if(repo.getAllBookOwnershipsAsObjects().contains(abookownership)) {
+		//		return "Book already in your Library";
+		//	} else {
 			return repo.addBookForUser(bookownership);
-			}
+		//	}
 		}
 
 		public String deleteUser(Long userID) {
@@ -78,12 +78,12 @@ public class BookServiceImpl implements BookService {
 		// create business rule so username must be unique
 		
 		public String addUser(String user) {
-			User auser = util.getObjectForJSON(user, User.class);
-			if(repo.getAllUsersAsObjects().contains(auser)) {
-				return "username already in use, choose another";
-			} else {
+		//	User auser = util.getObjectForJSON(user, User.class);
+		//	if(repo.getAllUsersAsObjects().contains(auser)) {
+		//		return "username already in use, choose another";
+		//	} else {
 			return repo.addUser(user);
-			}
+		//	}
 		}
 		
 		public String deleteBookForUser(Long bookownershipID) {
