@@ -57,7 +57,7 @@ package com.qa.rest;
 		@Path("/getUser/{id}")
 		@GET
 		@Produces({"application/json"})
-		public String getUser(Long userID) {
+		public String getUser(@PathParam("id") Long userID) {
 			return service.getUser(userID);
 		}
 		
