@@ -18,6 +18,8 @@ public interface BookRepository {
 	String getBookOwnership(Long bookownershipID);
 	
 	String getUser(Long userID);
+	
+	String getUserByUsername(String username);
 
 	Collection<Book> getAllBooksAsObjects();
 	

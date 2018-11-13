@@ -74,6 +74,11 @@ public class BookDBRepository implements BookRepository {
 		return util.getJSONForObject(auserinDB);
 	}
 	
+	public String getUserByUsername(String username) {
+		User auserinDB = retrieveUserFromUsername(username);
+		return util.getJSONForObject(auserinDB);
+	}
+	
 	@Transactional(REQUIRED)
 	public String addBook(String booktoadd) {
 		Book abook = util.getObjectForJSON(booktoadd, Book.class);

@@ -22,6 +22,8 @@ public interface BookService {
 	
 	String getUser(Long userID);
 	
+	String getUserByUsername(String username);
+	
 	Collection<Book> getAllBooksAsObjects();
 	
 	Collection<User> getAllUsersAsObjects();

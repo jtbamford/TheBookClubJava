@@ -49,6 +49,10 @@ public class BookServiceImpl implements BookService {
 			return repo.getUser(userID);
 		}
 		
+		public String getUserByUsername(String username) {
+			return repo.getUserByUsername(username);
+		}
+		
 		public Collection<Book> getAllBooksAsObjects() {
 			return repo.getAllBooksAsObjects();
 		}

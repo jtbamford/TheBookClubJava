@@ -52,14 +52,14 @@ package com.qa.rest;
 		public String getBookOwnership(String username, String title, String author) {
 			return service.getBookOwnership(username, title, author);
 		}
+		*/
 		
-		@Path("/getUser")
+		@Path("/getUserByUsername/{username}")
 		@GET
 		@Produces({"application/json"})
-		public String getUser(String username) {
-			return service.getUser(username);
-		}
-	*/	
+		public String getUser(@PathParam("username") String username) {
+			return service.getUserByUsername(username);
+		}	
 		
 		@Path("/getUser/{id}")
 		@GET
