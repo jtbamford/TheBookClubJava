@@ -62,21 +62,23 @@ public class BookServiceImpl implements BookService {
 		}
 		
 		public String addBook(String book) {
-		//	Book abook = util.getObjectForJSON(book, Book.class);
-		//	if(repo.getAllBooksAsObjects().contains(abook)) {
-		//		return "Book already in database";
-		//	} else {
+			Book abook = util.getObjectForJSON(book, Book.class);
+			if(repo.getAllBooksAsObjects().stream().filter(i->abook.getAuthor().equals(i.getAuthor()))
+					.filter(i->abook.getTitle().equals(i.getTitle())).count()!=0) {
+				return "{\"message\": \"book already in Database\"}";
+			} else {
 			return repo.addBook(book);
-		//	}
+			}
 		}
 	
 		public String addBookForUser(String bookownership) {
-		//	BookOwnership abookownership = util.getObjectForJSON(bookownership, BookOwnership.class);
-		//	if(repo.getAllBookOwnershipsAsObjects().contains(abookownership)) {
-		//		return "Book already in your Library";
-		//	} else {
+			BookOwnership abookownership = util.getObjectForJSON(bookownership, BookOwnership.class);
+			if(repo.getAllBookOwnershipsAsObjects().stream().filter(i->abookownership.getBookID().equals(i.getBookID()))
+					.filter(i->abookownership.getUserID().equals(i.getUserID())).count()!=0) {
+				return "{\"message\": \"book already in library\"}";
+			} else {
 			return repo.addBookForUser(bookownership);
-		//	}
+			}
 		}
 
 		public String deleteUser(Long userID) {
