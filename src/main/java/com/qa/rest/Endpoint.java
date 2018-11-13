@@ -30,6 +30,13 @@ package com.qa.rest;
 		public String getAllBookOwnerships() {
 			return service.getAllBookOwnerships();
 		}
+		
+		@Path("/getAllUsers")
+		@GET
+		@Produces({"application/json"})
+		public String getAllUsers() {
+			return service.getAllUsers();
+		}
 	
 		/* need to use ID's as inputs in URL here!	
 		@Path("/getBooks")
