@@ -10,6 +10,8 @@ public interface BookRepository {
 	
 	String getAllBookOwnerships();
 	
+	String getAllUsers();
+	
 	// method gets the books for an individual user
 	String getBooks(Long userID);
 	
