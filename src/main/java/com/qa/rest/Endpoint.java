@@ -23,6 +23,13 @@ package com.qa.rest;
 		public String getAllBooks() {
 			return service.getAllBooks();
 		}
+		
+		@Path("/getAllBookOwnerships")
+		@GET
+		@Produces({"application/json"})
+		public String getAllBookOwnerships() {
+			return service.getAllBookOwnerships();
+		}
 	
 		/* need to use ID's as inputs in URL here!	
 		@Path("/getBooks")
@@ -47,6 +54,19 @@ package com.qa.rest;
 		}
 	*/	
 		
+		@Path("/getUser/{id}")
+		@GET
+		@Produces({"application/json"})
+		public String getUser(@PathParam("id") Long userID) {
+			return service.getUser(userID);
+		}
+		
+		@Path("/getBookOwnership/{id}")
+		@GET
+		@Produces({"application/json"})
+		public String getBookOwnership(@PathParam("id") Long bookownershipID) {
+			return service.getBookOwnership(bookownershipID);
+		}
 		
 		@Path("/createBook")
 		@POST

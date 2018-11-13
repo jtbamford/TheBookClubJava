@@ -29,16 +29,20 @@ public class BookServiceImpl implements BookService {
 			return repo.getAllBooks();
 		}
 		
+		public String getAllBookOwnerships() {
+			return repo.getAllBookOwnerships();
+		}
+		
 		public String getBooks(Long userID) {
 		return repo.getBooks(userID);
 		}
 		
-		public String getBookOwnership(String username, String title, String author) {
-			return repo.getBookOwnership(username, title, author);
+		public String getBookOwnership(Long bookownershipID) {
+			return repo.getBookOwnership(bookownershipID);
 		}
 		
-		public String getUser(String username) {
-			return repo.getUser(username);
+		public String getUser(Long userID) {
+			return repo.getUser(userID);
 		}
 		
 		public Collection<Book> getAllBooksAsObjects() {
