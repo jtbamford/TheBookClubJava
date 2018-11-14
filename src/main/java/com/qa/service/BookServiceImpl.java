@@ -80,6 +80,8 @@ public class BookServiceImpl implements BookService {
 			if(repo.getAllBookOwnershipsAsObjects().stream().filter(i->abookownership.getBookID().equals(i.getBookID()))
 					.filter(i->abookownership.getUserID().equals(i.getUserID())).count()!=0) {
 				return "{\"message\": \"book already in library\"}";
+			} else if(abookownership.getRating()>5 || abookownership.getRating()<1) {
+				return "{\"message\": \"book rating not in range\"}";
 			} else {
 			return repo.addBookForUser(bookownership);
 			}
@@ -92,12 +94,12 @@ public class BookServiceImpl implements BookService {
 		// create business rule so username must be unique
 		
 		public String addUser(String user) {
-		//	User auser = util.getObjectForJSON(user, User.class);
-		//	if(repo.getAllUsersAsObjects().contains(auser)) {
-		//		return "username already in use, choose another";
-		//	} else {
+			User auser = util.getObjectForJSON(user, User.class);
+			if(repo.getAllUsersAsObjects().stream().filter(i->auser.getUsername().equals(i.getUsername())).count()!=0) {
+				return "{\"message\": \"create a unique username\"}";
+			} else {
 			return repo.addUser(user);
-		//	}
+			}
 		}
 		
 		public String deleteBookForUser(Long bookownershipID) {
