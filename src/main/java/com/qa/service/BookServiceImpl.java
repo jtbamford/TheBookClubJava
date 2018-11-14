@@ -37,12 +37,12 @@ public class BookServiceImpl implements BookService {
 			return repo.getAllUsers();
 		}
 		
-		public String getBooks(Long userID) {
-		return repo.getBooks(userID);
-		}
-		
 		public String getBookOwnership(Long bookownershipID) {
 			return repo.getBookOwnership(bookownershipID);
+		}
+		
+		public String getAllBookOwnershipsForUser(Long userID) {
+			return repo.getAllBookOwnershipsForUser(userID);
 		}
 		
 		public String getUser(Long userID) {

@@ -69,6 +69,12 @@ public class BookDBRepository implements BookRepository {
 		return util.getJSONForObject(abookownershipinDB);
 	}
 	
+	public String getAllBookOwnershipsForUser(Long userID) {
+		Query query = manager.createQuery("Select a FROM BookOwnership a where userID="+userID);
+		Collection<BookOwnership> bookownerships = (Collection<BookOwnership>) query.getResultList();
+		return util.getJSONForObject(bookownerships);
+	}
+	
 	public String getUser(Long userID) { 
 		User auserinDB = retrieveUser(userID);
 		return util.getJSONForObject(auserinDB);
@@ -155,13 +161,6 @@ public class BookDBRepository implements BookRepository {
 		userold.setUserID(auser.getUserID());
 		userold.setUsername(auser.getUsername());
 		return "{\"message\": \"account has been sucessfully updated\"}";
-	}
-
-	public String getBooks(Long userID) {
-		//User auserinDB = retrieveUser(userID);
-		Query query = manager.createQuery("Select a FROM BookOwnership a WHERE userID="+userID);
-		Collection<Book> books = (Collection<Book>) query.getResultList();
-		return util.getJSONForObject(books);
 	}
 
 }

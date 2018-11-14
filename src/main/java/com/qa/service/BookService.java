@@ -2,6 +2,8 @@ package com.qa.service;
 
 import java.util.Collection;
 
+import javax.persistence.Query;
+
 import com.qa.persistence.Book;
 import com.qa.persistence.BookOwnership;
 import com.qa.persistence.User;
@@ -15,10 +17,9 @@ public interface BookService {
 	
 	String getAllUsers();
 	
-	// method gets the books for an individual user
-	String getBooks(Long userID);
-	
 	String getBookOwnership(Long bookownershipID);
+	
+	String getAllBookOwnershipsForUser(Long userID);
 	
 	String getUser(Long userID);
 	

@@ -12,10 +12,9 @@ public interface BookRepository {
 	
 	String getAllUsers();
 	
-	// method gets the books for an individual user
-	String getBooks(Long userID);
-	
 	String getBookOwnership(Long bookownershipID);
+	
+	String getAllBookOwnershipsForUser(Long userID);
 	
 	String getUser(Long userID);
 	
