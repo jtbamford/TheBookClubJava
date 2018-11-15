@@ -143,16 +143,17 @@ public class BookDBRepository implements BookRepository {
 		User user = users.stream().filter(i->i.getUsername().equalsIgnoreCase(username)).findAny().get();
 		return user;
 	}
-	/*
-	public BookOwnership retrieveBookOwnership(String username, String title, String author, String bookownership) {
-		Book thebook = new Book(title, author, bookownership);
+	
+	// get this method working so can delete book ownership for user
+	public BookOwnership retrieveBookOwnership(String username, String title, String author) {
+		Book thebook = new Book(title, author);
 		User theuser = new User(username);
 		Collection<BookOwnership> bookownerships = getAllBookOwnershipsAsObjects();
 		BookOwnership bookownership = bookownerships.stream().filter(i->(i.getBook()).equals(thebook))
 				.filter(i->retrieveUser(i.getUserID()).equals(theuser)).findAny().get();
 		return bookownership;
 	}
-	*/
+	
 
 	@Transactional(REQUIRED)
 	public String updateUser(String user, Long userID) {
