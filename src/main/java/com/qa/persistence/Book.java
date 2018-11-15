@@ -1,9 +1,15 @@
 package com.qa.persistence;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 // this is where we will define our objects from the table book, define these quantities in Java
 
@@ -24,6 +30,7 @@ public class Book {
 		this.title=title;
 		this.author=author;
 	}
+
 
 	public String getTitle() {
 		return title;

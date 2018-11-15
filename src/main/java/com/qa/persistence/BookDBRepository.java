@@ -144,11 +144,12 @@ public class BookDBRepository implements BookRepository {
 		return user;
 	}
 	
+	// get this method working so can delete book ownership for user
 	public BookOwnership retrieveBookOwnership(String username, String title, String author) {
 		Book thebook = new Book(title, author);
 		User theuser = new User(username);
 		Collection<BookOwnership> bookownerships = getAllBookOwnershipsAsObjects();
-		BookOwnership bookownership = bookownerships.stream().filter(i->retrieveBook(i.getBookID()).equals(thebook))
+		BookOwnership bookownership = bookownerships.stream().filter(i->(i.getBook()).equals(thebook))
 				.filter(i->retrieveUser(i.getUserID()).equals(theuser)).findAny().get();
 		return bookownership;
 	}
