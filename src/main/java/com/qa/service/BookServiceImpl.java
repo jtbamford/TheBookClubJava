@@ -77,7 +77,8 @@ public class BookServiceImpl implements BookService {
 	
 		public String addBookForUser(String bookownership) {
 			BookOwnership abookownership = util.getObjectForJSON(bookownership, BookOwnership.class);
-			if(repo.getAllBookOwnershipsAsObjects().stream().filter(i->abookownership.getBook().equals(i.getBook())).count()!=0) {
+			if(repo.getAllBookOwnershipsAsObjects().stream().filter(i->abookownership.getBook().getAuthor().equals(i.getBook().getAuthor()))
+					.filter(i->abookownership.getBook().getTitle().equals(i.getBook().getTitle())).count()!=0) {
 				return "{\"message\": \"book already in library\"}";
 			} else if(abookownership.getRating()>5 || abookownership.getRating()<1) {
 				return "{\"message\": \"book rating not in range\"}";
