@@ -152,6 +152,12 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>5.3.7.Final</version>
 		</dependency>
+		
+		<dependency>
+    	<groupId>org.seleniumhq.selenium</groupId>
+    	<artifactId>selenium-java</artifactId>
+    	<version>3.14.0</version>
+		</dependency>
 	</dependencies>
 
 	<profiles>
