@@ -126,11 +126,7 @@ public class BookServiceImpl implements BookService {
 		public User retrieveUserFromUsername(String username) {
 			return repo.retrieveUserFromUsername(username);
 		}
-		
-		public BookOwnership retrieveBookOwnership(String username, String title, String author) {
-			return repo.retrieveBookOwnership(username, title, author);
-		}
-		
+
 }
 
 

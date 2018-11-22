@@ -117,5 +117,14 @@ package com.qa.rest;
 		public String updateUser(String user,@PathParam("id") Long userID) {
 			return service.updateUser(user, userID);
 		}
+		
+
+		public BookService getService() {
+			return service;
+		}
+
+		public void setService(BookService service) {
+			this.service = service;
+		}
 
 }

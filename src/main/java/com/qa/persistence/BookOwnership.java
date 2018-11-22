@@ -35,8 +35,7 @@ public class BookOwnership {
 
 	}
 
-	public BookOwnership(Long bookownershipID, byte rating, String review, Book book, Long userID) {
-		this.bookownershipID=bookownershipID;
+	public BookOwnership(byte rating, String review, Book book, Long userID) {
 		this.rating=rating;
 		this.review=review;
 		this.book=book;
