@@ -50,6 +50,4 @@ public interface BookRepository {
 	
 	User retrieveUserFromUsername(String username);
 	
-	BookOwnership retrieveBookOwnership(String username, String title, String author);
-	
 }

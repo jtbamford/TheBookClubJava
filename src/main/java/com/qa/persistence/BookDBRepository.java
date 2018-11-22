@@ -89,14 +89,14 @@ public class BookDBRepository implements BookRepository {
 	public String addBook(String booktoadd) {
 		Book abook = util.getObjectForJSON(booktoadd, Book.class);
 		manager.persist(abook);
-		return "{\"message\": \"book has been sucessfully added to Database\"}";
+		return "{\"message\": \"book has been successfully added to Database\"}";
 	}
 	
 	@Transactional(REQUIRED)
 	public String addBookForUser(String bookownershiptoadd) {
 		BookOwnership abookownership = util.getObjectForJSON(bookownershiptoadd, BookOwnership.class);
 		manager.persist(abookownership);
-		return "{\"message\": \"book has been sucessfully added to your Library\"}";
+		return "{\"message\": \"book has been successfully added to your Library\"}";
 	}
 	
 	
@@ -104,7 +104,7 @@ public class BookDBRepository implements BookRepository {
 	public String addUser(String user) {
 		User auser = util.getObjectForJSON(user, User.class);
 		manager.persist(auser);
-		return "{\"message\": \"user has been sucessfully added\"}";
+		return "{\"message\": \"user has been successfully added\"}";
 	}
 
 	@Transactional(REQUIRED)
@@ -113,7 +113,7 @@ public class BookDBRepository implements BookRepository {
 		if (abookownershipinDB != null) {
 			manager.remove(abookownershipinDB);
 		}
-		return "{\"message\": \"book has been sucessfully removed from your Library\"}";
+		return "{\"message\": \"book has been successfully removed from your Library\"}";
 	}
 	
 	@Transactional(REQUIRED)
@@ -122,7 +122,7 @@ public class BookDBRepository implements BookRepository {
 		if (userInDB != null) {
 			manager.remove(userInDB);
 		}
-		return "{\"message\": \"trainee sucessfully deleted\"}";
+		return "{\"message\": \"user successfully deleted\"}";
 	}
 	
 
@@ -143,17 +143,6 @@ public class BookDBRepository implements BookRepository {
 		User user = users.stream().filter(i->i.getUsername().equalsIgnoreCase(username)).findAny().get();
 		return user;
 	}
-	
-	// get this method working so can delete book ownership for user
-	public BookOwnership retrieveBookOwnership(String username, String title, String author) {
-		Book thebook = new Book(title, author);
-		User theuser = new User(username);
-		Collection<BookOwnership> bookownerships = getAllBookOwnershipsAsObjects();
-		BookOwnership bookownership = bookownerships.stream().filter(i->(i.getBook()).equals(thebook))
-				.filter(i->retrieveUser(i.getUserID()).equals(theuser)).findAny().get();
-		return bookownership;
-	}
-	
 
 	@Transactional(REQUIRED)
 	public String updateUser(String user, Long userID) {
@@ -162,6 +151,22 @@ public class BookDBRepository implements BookRepository {
 		userold.setUserID(auser.getUserID());
 		userold.setUsername(auser.getUsername());
 		return "{\"message\": \"account has been sucessfully updated\"}";
+	}
+	
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getUtil() {
+		return util;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
 	}
 
 }
