@@ -150,7 +150,7 @@ public class BookDBRepository implements BookRepository {
 		User userold=retrieveUser(userID);
 		userold.setUserID(auser.getUserID());
 		userold.setUsername(auser.getUsername());
-		return "{\"message\": \"account has been sucessfully updated\"}";
+		return "{\"message\": \"user has been sucessfully updated\"}";
 	}
 	
 	public EntityManager getManager() {
