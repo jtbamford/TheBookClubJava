@@ -217,7 +217,7 @@ public class BookDBRepositoryTest {
 		User user = new User("user_one");
 		Mockito.when(manager.find(User.class, 1L)).thenReturn(user);
 		String reply = repo.updateUser(MOCK_USER,1L);
-		Assert.assertEquals("{\"message\": \"account has been sucessfully updated\"}", reply);
+		Assert.assertEquals("{\"message\": \"user has been sucessfully updated\"}", reply);
 	}
 
 
