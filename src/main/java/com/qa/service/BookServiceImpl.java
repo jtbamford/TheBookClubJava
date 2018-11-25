@@ -108,7 +108,12 @@ public class BookServiceImpl implements BookService {
 		}
 		
 		public String updateUser(String user, Long userID) {
+			User auser = util.getObjectForJSON(user, User.class);
+			if(repo.getAllUsersAsObjects().stream().filter(i->auser.getUsername().equals(i.getUsername())).count()!=0) {
+				return "{\"message\": \"create a unique username\"}";
+			} else {
 			return repo.updateUser(user, userID);
+			}
 		}
 		
 		public Book retrieveBook(Long bookID) {
